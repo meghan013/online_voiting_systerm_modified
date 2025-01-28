@@ -1,0 +1,56 @@
+{% extends "poll/base.html" %}
+{% block title %}Result Page{% endblock %}
+{% block content %}
+  <h2 class="text-center">Election Results</h2>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Candidate Name</th>
+                  <th scope="col">Candidate Position</th>
+                  <th scope="col">Total Vote</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in obj %}
+                <tr>
+                  <td>{{ i.name }}</td>
+                  <td>{{ i.position }}</td>
+                  <td>{{ i.total_vote }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<style>
+  body {
+    background: linear-gradient(135deg, #4a90e2, #ff8080);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: contain;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+
+  h2 {
+    color: #fff; /* Title text color */
+  }
+
+  table {
+    background-color: #fff; /* Table background color */
+  }
+
+  th, td {
+    text-align: center;
+  }
+</style>
+{% endblock %}

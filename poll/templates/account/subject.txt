@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans with site_name=site.name domain=current_site.domain %}Verify your email address for {{ site_name }}{% endblocktrans %}

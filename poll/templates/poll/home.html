@@ -1,0 +1,36 @@
+{% extends "poll/base.html" %}
+{% block title %}Online Voting System{% endblock %}
+{% block content %}
+<br>
+<div class="jumbotron">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <div class="row">
+    <div class="col-md-6">
+      <img src="https://impact100.org/wp-content/uploads/2018/05/Smartphone-Vote.jpg" height="400" />
+    </div>
+    <div class="col-md-6">
+      <h1 class="display-4">Welcome to Online Voting System</h1>
+      <hr class="my-4 bg-dark" style="height: 2px" />
+      <p class="lead"><h3>This is a simple voting system where you can vote for your favourite candidate.</h3></p>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+  body {
+    background: linear-gradient(45deg, #FFEDD8, #FFFDCB);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Times New Roman, Arial, sans-serif;
+  }
+</style>
+
+{% endblock %}

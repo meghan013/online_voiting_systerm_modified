@@ -1,0 +1,18 @@
+{% load account %}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p>
+        {% blocktrans with site_name=site.name %}Hello from {{ site_name }}! You're receiving this email because you recently created an account on our website. To verify your email address and activate your account, please click the following link:{% endblocktrans %}
+    </p>
+    <p>
+        <a href="{{ protocol }}://{{ domain }}{% url 'account_confirm_email' key=confirmation.key %}">Verify your email</a>
+    </p>
+    <p>
+        {% blocktrans with site_name=site.name site_domain=site.domain %}If you didn't create an account on {{ site_name }} or have any questions, please contact us at {{ site_domain }}.{% endblocktrans %}
+    </p>
+</body>
+</html>

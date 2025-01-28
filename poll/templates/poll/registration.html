@@ -1,0 +1,107 @@
+{% extends "poll/base.html" %}
+{% block title %}Registration{% endblock %}
+{% block content %}
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            {% if note %}
+            <h3 class="text text-muted">{{note}}</h3>
+            {% endif %}
+            <h5 class="card-title text-center font-weight-bold">User Registration</h5>
+            <form action="" method="POST">
+              {% csrf_token %}
+              {% for field in form %}
+                <div class="form-group">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  {{ field }}
+                  {% if field.name == 'email' %}
+                    <small class="form-text text-muted">Example: abc@gmail.com</small>
+                  {% endif %}
+                  {% for error in field.errors %}
+                    <small class="form-text text-danger">{{ error }}</small>
+                  {% endfor %}
+                  {% if field.name == 'username' %}
+                    <small class="form-text text-muted">Username should contain letters and digits and be less than 13 characters.</small>
+                  {% elif field.name == 'password' %}
+                    <small class="form-text text-muted">Password should be more than 6 characters long and contain letters, digits, and @/./+/-/_ only.</small>
+                  {% elif field.name == 'date_of_birth' %}
+                    <small class="form-text text-muted">Enter your date of birth.</small>
+                  {% endif %}
+                  {% if field.name == 'first_name' %}
+                    <small class="form-text text-muted">First name should contain only alphabetic characters and be less than 8 characters.</small>
+                  {% endif %}
+                  {% if field.name == 'last_name' %}
+                    <small class="form-text text-muted">Last name should contain only alphabetic characters and be less than 8 characters.</small>
+                  {% endif %}
+                </div>
+              {% endfor %}
+              <button type="submit" class="button">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+
+<style>
+  body {
+    background: linear-gradient(45deg, #FFFDCB, #FFB38E);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .card {
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0099FF;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 16px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #378CE7;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .text-danger {
+    font-size: 14px;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!-- registration/verification_email.html -->
+
+{% load account %}
+
+You're receiving this email because you registered on {{ domain }}.
+
+To activate your account, click the following link:
+{{ protocol }}://{{ domain }}{% verify_email uidb64 token %}
+
+If you didn't create an account, please ignore this email.
